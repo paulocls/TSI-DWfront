@@ -1,0 +1,13 @@
+@import 'paleta';
+
+@mixin espaco($bkg, $margin, $padding){
+    margin: $margin;
+    padding: $padding;
+    background: $bkg;
+}
+
+@mixin font($family, $color, $align){
+    font-family: $family;
+    color: $color;
+    align: $align;
+}

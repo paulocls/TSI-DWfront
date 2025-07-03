@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-brf">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cachorro - Canvas</title>
+    <style>
+        canvas{
+            border: 1px solid gray;
+            position: relative;
+            display: flex;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="idcanvas" width="400" height="400"></canvas>
+    <button onclick="cabeca(); return false;">Cabeça</button>
+    <button onclick="corpo(); return false;">Corpo</button>
+    <button onclick="pata(); return false;">Patas</button>
+    <button onclick="cauda(); return false;">Cauda</button>
+    <button onclick="apagar(); return false;">Apagar</button>
+
+    <script>
+
+        const canvas = document.getElementById("idcanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Corpo
+        function corpo(){
+        ctx.fillStyle = "#A0522D"
+        ctx.beginPath();
+        ctx.ellipse(250, 260, 70, 50, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        }
+
+        // Cabeça
+        function cabeca(){
+        ctx.fillStyle = "#A0522D"
+        ctx.beginPath();
+        ctx.arc(160, 220, 40, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Orelha esquerda
+        ctx.beginPath();
+        ctx.moveTo(130, 200);
+        ctx.lineTo(110, 180);
+        ctx.lineTo(140, 190);
+        ctx.fill();
+
+        // Orelha direita
+        ctx.beginPath();
+        ctx.moveTo(190, 200);
+        ctx.lineTo(210, 180);
+        ctx.lineTo(180, 190);
+        ctx.fill();
+
+        // Olhos
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.arc(150, 215, 5, 0, Math.PI * 2);
+        ctx.arc(170, 215, 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Focinho
+        ctx.beginPath();
+        ctx.moveTo(160, 240);  // ponto superior do triângulo
+        ctx.lineTo(150, 230);  // canto inferior esquerdo
+        ctx.lineTo(170, 230);  // canto inferior direito
+        ctx.closePath();
+        ctx.fillStyle = 'black';
+        ctx.fill();
+        // Boca
+        ctx.beginPath();
+        ctx.arc(160, 245, 10, 0, Math.PI, false); // semicircle down
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
+
+        // Língua
+        ctx.beginPath();
+        ctx.fillStyle = '#ff6347';
+        ctx.ellipse(160, 261, 5, 10, 0, 0, Math.PI * 2); // língua oval
+        ctx.fill();
+        }
+
+        function pata(){
+        // Pernas (4 retângulos)
+        ctx.fillStyle = "#A0522D"
+        ctx.fillRect(220, 290, 15, 40); // perna traseira esquerda
+        ctx.fillRect(290, 290, 15, 40); // perna traseira direita
+        ctx.fillRect(270, 290, 15, 40); // perna dianteira esquerda
+        ctx.fillRect(190, 290, 15, 40);} // perna dianteira direita
+
+        function cauda(){
+        // Cauda
+        ctx.beginPath();
+        ctx.moveTo(320, 250);
+        ctx.quadraticCurveTo(370, 220, 350, 260);
+        ctx.strokeStyle = '#A0522D';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+        }
+        
+        //Botão apagar
+        function apagar(){
+            ctx.clearRect(0, 0, 400, 800);
+        }
+        
+     
+    </script>
+</body>
+</html>

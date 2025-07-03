@@ -1,0 +1,47 @@
+@import 'paleta';
+@import 'funcao';
+
+body{
+    @include espaco($fonteclaro, 0, 0);
+}
+
+header{
+    @include font (Calibri, $fonteclaro, center);
+    @include espaco($cor2, 0, 20px);
+    span{
+        &:hover{
+            background: $cor4;
+            transition: 250ms;
+        }
+    }
+    text-align: center;
+    font-size: 100px;
+    
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+    img{
+        float: left;
+        padding: 5px;
+    }
+    p{
+        @include font(Calibri, $cor1, center);
+        padding: 30px;
+    }
+    text-align: justify;
+  
+}
+
+footer{
+    @include font(Calibri, $cor3, center);
+    @include espaco($cor2, 0, 5px 0);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+
+
+

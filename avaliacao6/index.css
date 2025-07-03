@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+header {
+  font-family: Calibri;
+  color: #fff;
+  align: center;
+  margin: 0;
+  padding: 20px;
+  background: #0000ff;
+  text-align: center;
+  font-size: 100px;
+}
+header span:hover {
+  background: #0000bb;
+  transition: 250ms;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: justify;
+}
+.container img {
+  float: left;
+  padding: 5px;
+}
+.container p {
+  font-family: Calibri;
+  color: #777;
+  align: center;
+  padding: 30px;
+}
+
+footer {
+  font-family: Calibri;
+  color: #ff0000;
+  align: center;
+  margin: 0;
+  padding: 5px 0;
+  background: #0000ff;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}/*# sourceMappingURL=index.css.map */

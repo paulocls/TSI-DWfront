@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora escolar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #ddd;
+            margin: 5px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <h2>Calculadora Escolar</h2>
+            <input type="number" id="nota" placeholder="Digite uma nota">
+            <button onclick="adicionarNota()">Adicionar Nota</button>
+            <button onclick="calcularMedia()">Calcular Média</button>
+            <ul id="listaNotas"></ul>
+            <p id="resultado"></p>
+    </div>
+    <script>
+        let notas = [];
+
+        function adicionarNota() {
+            let notaInput = document.getElementById("nota").value;
+            let nota = parseFloat(notaInput);
+
+            if (!isNaN(nota) && nota >= 0 && nota <= 10) {
+                notas.push(nota);
+                document.getElementById("nota").value = "";
+                alert("Nota adicionada com sucesso!");
+            } else {
+                alert("Por favor, insira uma nota válida entre 0 e 10.");
+            }
+        }
+
+        function calcularMedia() {
+            if (notas.length === 0) {
+                document.getElementById("resultado").innerText = "Nenhuma nota adicionada.";
+                return;
+            }
+
+            let soma = notas.reduce((acc, nota) => acc + nota, 0);
+            let media = soma / notas.length;
+
+            let mensagem = media >= 7 ? "Aprovado! 🎉" : "Reprovado. 😢";
+            document.getElementById("resultado").innerText = `Média: ${media.toFixed(2)} - ${mensagem}`;
+        }
+        function exibirNotas() {
+            let listaNotas = document.getElementById("listaNotas");
+            listaNotas.innerHTML = ""; // Limpa a lista antes de exibir novamente
+
+            notas.forEach((nota, index) => {
+                let item = document.createElement("li");
+                item.innerText = `Nota ${index + 1}: ${nota}`;
+                listaNotas.appendChild(item);
+        });
+    }      
+    </script>       
+</body>
+</html>

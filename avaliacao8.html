@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação online 8</title>
+    <style>
+        body{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 50px;
+            text-align: center;
+            background-color: #6610f2;
+            font-size: 16px;
+        }
+        form{
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffc107; 
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="text"]{
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            font-size: 16px;
+        }
+        button:hover {
+        background-color: #45a049;
+        }
+        #resultado {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Formulário para criar Cookies</h1>
+    <form class="row g-3" onsubmit="event.preventDefault(); criarCookie();">
+        <div class="col-md-6">
+          <label for="nomeUsuario" class="form-label">Nome do usuario</label>
+          <input type="text" class="form-control" id="nomeUsuario" name="nome">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Criar cookies</button>
+        </div>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        // Função para definir um cookie
+        function setCookie(nome, valor, dias) {
+        const d = new Date();
+        d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = nome + "=" + valor + ";" + expires + ";path=/";
+    }
+
+    // Função para obter um cookie
+        function getCookie(nome) {
+        const nomeBusca = nome + "=";
+        const cookies = document.cookie.split(';');
+        for(let i = 0; i < cookies.length; i++) {
+            let c = cookies[i].trim();
+            if (c.indexOf(nomeBusca) == 0) {
+            return c.substring(nomeBusca.length, c.length);
+            }
+        }
+      return "";
+    }
+
+    // Função para criar o cookie e exibir na página
+        function criarCookie() {
+        const nome = document.getElementById("nomeUsuario").value;
+        setCookie("usuario", nome, 7); // Cookie dura 7 dias
+        const valorCookie = getCookie("usuario");
+        document.getElementById("resultado").innerHTML = 
+            `<p>Cookie criado!</p>`;
+    }
+    </script>
+    
+</body>
+</html>

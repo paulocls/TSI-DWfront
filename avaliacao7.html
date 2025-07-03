@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação 7</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+       *{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: auto;
+            padding: auto;
+            background-color: #f4f4f4;
+       }
+       .formulario{
+            display: flex;
+            flex-direction: column;
+
+       }
+       .container{
+            width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+       }
+       .container input, .container textarea{
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: justify;
+            
+       }
+       .botao{
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+       }
+       .lista{
+            background: #e3e3e3;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+       }
+       
+       .h1, label{
+        text-align: center;
+        color: #333;
+
+       }
+       .exc {
+                text-decoration: none;
+                color: #fff;
+                display: block;
+                position: relative;
+                top: 0;
+                left: 255px;
+                background: #c55;
+                width: 60px;
+                text-align: center;
+                padding: 3px;
+                border-radius: 4px 4px 0px 0;
+        }
+        .comentario{
+            text-align: justify;
+            margin: 20px 0 0 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        new Vue({
+            el:'#app',
+            template: ` 
+                <div class="container">
+                    <div class="formulario">
+                        <h1>Lista de Comentário</h1>
+                        <label> Nome do usuário</label>
+                        <p>
+                            <input type="text" name="usuário" placeholder="Usuário" v-model="nome">
+                        </p>
+                         <label>Comentários</label>
+                        <p>
+                            <textarea name="message" cols="30" rows="5" placeholder="Comentário" v-model="comentario"></textarea>
+                        </p>
+                        <button type="submit" class="botao" v-on:click="addComentario">Adicionar comentário</button>
+                    </div>
+                    <div class="lista" v-for="(postagem, index) in comentarios">
+                        <div class="avatar"></div>
+                        <p class="autor"><b>{{postagem.nome}}</b></p>
+                        <p class="comentario">{{postagem.comentario}}</p>
+                        <p><a href="#" class="exc" v-on:click="removerComentario(index)">Excluir</a></p>
+                    </div>
+                </div>
+            
+            `,
+        data(){
+            return{
+                comentarios: [],
+                nome: '',
+                comentario: ''
+            }
+        },
+
+        methods: {
+            addComentario(){
+                this.comentarios.push({
+                    nome: this.nome, comentario: this.comentario})
+                    this.name = '';
+                    this.comentario = '';
+            },
+            removerComentario(index){
+                this.comentarios.splice(index,1);
+            }
+        },
+    });
+    </script>
+</body>
+</html>

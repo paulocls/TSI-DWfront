@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin: 4rem;
+            grid-template-rows: auto;
+            gap: 10px;
+        }
+        .header{
+            grid-column: span 3;
+            background-color: rgb(27, 53, 53);
+            text-align: center;
+            height: 500px;
+        }
+        .columm{
+            background-color: rgb(240, 145, 183);
+            height: 500px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <section>Topo</section>
+        </div>
+        <div class="columm">
+            <section>Columa 1</section>
+        </div>
+        <div class="columm">
+            <section>Coluna 2</section>
+        </div>
+        <div class="columm">
+            <section>Coluna 3</section>
+        </div>
+    </div>
+</body>
+</html>
